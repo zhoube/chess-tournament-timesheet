@@ -1,7 +1,6 @@
 import { Typography } from "@mui/material";
 import { GridCellParams, GridColumns } from "@mui/x-data-grid";
 import { SetStateAction } from "react";
-import clsx from 'clsx';
 
 export enum STATUS {
 	IN = 'In',
@@ -10,14 +9,6 @@ export enum STATUS {
 
 export const logColumns: GridColumns = [
 	{
-		field: 'id',
-		headerName: 'Seed', 
-		width: 100,
-		headerAlign: 'center',
-		align: 'center',
-		type: 'number' 
-	},
-	{
 		field: 'name',
 		headerName: 'Name',
 		width: 300,
@@ -25,30 +16,29 @@ export const logColumns: GridColumns = [
 		align: 'center'
 	},
 	{
-		field: 'time_out',
+		field: 'displayedTimeOut',
 		headerName: 'Time Out',
-		width: 100,
+		width: 150,
 		headerAlign: 'center',
 		align: 'center'
 	},
 	{
-		field: 'time_in',
+		field: 'displayedTimeIn',
 		headerName: 'Time In',
-		width: 100,
+		width: 150,
+		headerAlign: 'center',
+		align: 'center'
+	},
+	{
+		field: 'nothing',
+		headerName: '',
+		width: 150,
 		headerAlign: 'center',
 		align: 'center'
 	},
 ];
 
 export const playerColumns: GridColumns = [
-	{
-		field: 'id',
-		headerName: 'Seed', 
-		width: 100,
-		headerAlign: 'center',
-		align: 'center',
-		type: 'number' 
-	},
 	{
 		field: 'name',
 		headerName: 'Name', 
@@ -77,5 +67,60 @@ export const playerColumns: GridColumns = [
 				)
 			}
 		}
+	}
+]
+
+export const adminLogColumns: GridColumns = [
+	{
+		field: 'name',
+		headerName: 'Name',
+		width: 300,
+		headerAlign: 'center',
+		align: 'center'
+	},
+	{
+		field: 'displayedTimeOut',
+		headerName: 'Time Out',
+		width: 150,
+		headerAlign: 'center',
+		align: 'center'
+	},
+	{
+		field: 'displayedTimeIn',
+		headerName: 'Time In',
+		width: 150,
+		headerAlign: 'center',
+		align: 'center'
+	},
+	{
+		field: 'displayedTimeTaken',
+		headerName: 'Time Taken',
+		width: 150,
+		headerAlign: 'center',
+		align: 'center'
+	},
+	{
+		field: 'deleted',
+		headerName: 'Deleted?',
+		width: 100,
+		headerAlign: 'center',
+		align: 'center'
+	}
+];
+
+export const adminPlayerColumns: GridColumns = [
+	{
+		field: 'name',
+		headerName: 'Name', 
+		width: 300,
+		headerAlign: 'center',
+		align: 'center'
+	},
+	{
+		field: 'exits',
+		headerName: 'Exits', 
+		width: 100,
+		headerAlign: 'center',
+		align: 'center'
 	}
 ]

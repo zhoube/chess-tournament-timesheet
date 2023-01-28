@@ -5,4 +5,5 @@ export type Player = {
     name: string;
     status: STATUS;
 	currentLogId?: number;
+	exits: number;
 }
