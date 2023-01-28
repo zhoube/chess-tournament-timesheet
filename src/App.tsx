@@ -68,7 +68,7 @@ function App() {
 					Round 2
 				</Typography>
 				<Stack direction='row' spacing={10} justifyContent='space-evenly'>
-					<Box sx={{ height: 1000, width: '45%' }}>
+					<Box sx={{ height: 500, width: '45%' }}>
 						<Typography fontSize={20} margin={'2%'} textAlign={'center'}>
 							Time Sheet
 						</Typography>
@@ -83,7 +83,7 @@ function App() {
 					</Box>
 					<Box 
 						sx={{
-							height: 1000,
+							height: 500,
 							width: '45%',
 							'& .cold': {
 								backgroundColor: '#0096FF'
