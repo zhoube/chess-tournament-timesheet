@@ -1,10 +1,19 @@
 import { useEffect, useState } from 'react';
 import { Box, Stack, Typography } from '@mui/material';
-import { DataGrid, GridEventListener } from '@mui/x-data-grid';
+import { DataGrid, GridCellParams, GridEventListener } from '@mui/x-data-grid';
 import { logColumns, playerColumns, STATUS } from './constants';
 import { players } from './player/players';
 import { Player } from './player/types';
 import { Log } from './log/types';
+import './App.css'
+import { ThemeProvider, createTheme } from '@mui/material/styles';
+import CssBaseline from '@mui/material/CssBaseline';
+
+const darkTheme = createTheme({
+  palette: {
+    mode: 'dark',
+  },
+});
 
 function App() {
 	const [allPlayers, setAllPlayers] = useState(players);
@@ -29,7 +38,6 @@ function App() {
 	};
 
 	const createLog = (currentPlayer: Player) => {
-		console.log(allLogs);
 		const now = new Date();
 		if (currentPlayer.status == STATUS.IN) {
 			const newLog: Log = {
@@ -50,44 +58,71 @@ function App() {
 	}
 
 	return (
-		<Box padding={'2%'}>
-			<Typography fontSize={50} textAlign={'center'}>
-				National Championships
-			</Typography>
-			<Typography fontSize={30} textAlign={'center'}>
-				Round 2
-			</Typography>
-			<Stack direction='row' spacing={10} justifyContent='space-evenly'>
-				<Box sx={{ height: 400, width: '45%' }}>
-					<Typography fontSize={20} margin={'2%'} textAlign={'center'}>
-						Time Sheet
-					</Typography>
-					<DataGrid
-						rows={allLogs}
-						columns={logColumns}
-						pageSize={20}
-						rowsPerPageOptions={[20, 50, 100]}
-						checkboxSelection={false}
-						experimentalFeatures={{ newEditingApi: true }}
-					/>
-				</Box>
-				<Box sx={{ height: 400, width: '45%' }}>
-					<Typography fontSize={20} margin={'2%'} textAlign={'center'}>
-						All Players
-					</Typography>
-					<DataGrid
-						rows={allPlayers}
-						columns={playerColumns}
-						pageSize={20}
-						rowsPerPageOptions={[20, 50, 100]}
-						checkboxSelection={false}
-						experimentalFeatures={{ newEditingApi: true }}
-						onCellClick={handleStatusChange}
-					/>
-				</Box>
-			</Stack>
+		<ThemeProvider theme={darkTheme}>
+			<CssBaseline />
+			<Box padding={'2%'}>
+				<Typography fontSize={50} textAlign={'center'}>
+					National Championships
+				</Typography>
+				<Typography fontSize={30} textAlign={'center'}>
+					Round 2
+				</Typography>
+				<Stack direction='row' spacing={10} justifyContent='space-evenly'>
+					<Box sx={{ height: 1000, width: '45%' }}>
+						<Typography fontSize={20} margin={'2%'} textAlign={'center'}>
+							Time Sheet
+						</Typography>
+						<DataGrid
+							rows={allLogs}
+							columns={logColumns}
+							pageSize={50}
+							rowsPerPageOptions={[20, 50, 100]}
+							checkboxSelection={false}
+							experimentalFeatures={{ newEditingApi: true }}
+						/>
+					</Box>
+					<Box 
+						sx={{
+							height: 1000,
+							width: '45%',
+							'& .cold': {
+								backgroundColor: '#0096FF'
+							},
+							'& .hot': {
+								backgroundColor: '#EE4B2B'
+							}
+						}}>
+						<Typography fontSize={20} margin={'2%'} textAlign={'center'}>
+							All Players
+						</Typography>
+						<DataGrid
+							rows={allPlayers}
+							columns={playerColumns}
+							pageSize={50}
+							rowsPerPageOptions={[20, 50, 100]}
+							checkboxSelection={false}
+							experimentalFeatures={{ newEditingApi: true }}
+							onCellClick={handleStatusChange}
+							getCellClassName={(params: GridCellParams<string>) => {
+								if (params.field === 'status') {
+									// // console.log(params);
+									// if (params.value == STATUS.IN) {
+									// 	console.log("IN PLZ");
+									// }
+									return params.value == STATUS.IN
+										? 'cold'
+										: 'hot';
+								} else {
+									return '';
+								}
+							}}
+						/>
+					</Box>
+				</Stack>
 
-		</Box>
+			</Box>
+		</ThemeProvider>
+
 	);
 }
 

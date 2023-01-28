@@ -1,6 +1,7 @@
 import { Typography } from "@mui/material";
-import { GridColumns } from "@mui/x-data-grid";
+import { GridCellParams, GridColumns } from "@mui/x-data-grid";
 import { SetStateAction } from "react";
+import clsx from 'clsx';
 
 export enum STATUS {
 	IN = 'In',
