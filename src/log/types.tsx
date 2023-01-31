@@ -1,7 +1,7 @@
 export type Log = {
 	id: number;
 	playerId: number;
-	name: string;
+	displayedName: string;
 	timeOut: Date;
 	displayedTimeOut: string;
 	timeIn?: Date;
@@ -9,4 +9,4 @@ export type Log = {
 	timeTaken?: number;
 	displayedTimeTaken?: string;
 	deleted: boolean;
-}
+};

@@ -1,9 +1,11 @@
-import { STATUS } from "../constants";
+import { STATUS, SHORT_TITLE } from '../constants';
 
 export type Player = {
-    id: number;
-    name: string;
-    status: STATUS;
+	id: number;
+	title?: SHORT_TITLE;
+	name: string;
+	status: STATUS;
 	currentLogId?: number;
 	exits: number;
-}
+	isPlaying: boolean;
+};
