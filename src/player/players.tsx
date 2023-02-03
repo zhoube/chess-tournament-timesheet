@@ -131,6 +131,7 @@ const players: Player[] = [
 	},
 	{
 		id: 18,
+		title: SHORT_TITLE.AGM,
 		name: 'Kapoor, Satvik',
 		status: STATUS.IN,
 		exits: 0,

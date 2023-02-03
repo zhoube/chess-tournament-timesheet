@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Box, Button, Stack, Typography } from '@mui/material';
 import { DataGrid, GridEventListener } from '@mui/x-data-grid';
-import { logColumns, playerColumns, STATUS } from '../constants';
+import { logColumns, playerColumns, ROUND_NUMBER, STATUS } from '../constants';
 import { sortedPlayers } from '../player/players';
 import { Player } from '../player/types';
 import { Log } from '../log/types';
@@ -39,14 +39,15 @@ function Home() {
 	const [currentLogId, setCurrentLogId] = useState(
 		location.state ? location.state.currentLogId : 1
 	);
+	const [currentDateTime, setCurrentDateTime] = useState(new Date());
 
-	useEffect(
-		() =>
-			setAllActivePlayers(
-				filter(allPlayers, (player: Player) => player.isPlaying)
-			),
-		[allPlayers]
-	);
+	useEffect(() => {
+		setAllActivePlayers(
+			filter(allPlayers, (player: Player) => player.isPlaying)
+		);
+		const timer = setInterval(() => setCurrentDateTime(new Date()), 1000);
+		return () => clearInterval(timer);
+	}, [allPlayers]);
 
 	const onAdminClick = () =>
 		navigate('/admin', {
@@ -64,9 +65,8 @@ function Home() {
 			const newLog: Log = {
 				id: currentLogId,
 				playerId: currentPlayer.id,
-				displayedName: currentPlayer.title
-					? currentPlayer.title + ' ' + currentPlayer.name
-					: currentPlayer.name,
+				title: currentPlayer.title,
+				displayedName: currentPlayer.name,
 				timeOut: now,
 				displayedTimeOut: now.toLocaleTimeString(),
 				deleted: false,
@@ -93,7 +93,7 @@ function Home() {
 	const handlePlayerStatusChange: GridEventListener<'cellClick'> = (
 		params
 	) => {
-		if (params.field != 'status' && params.field != 'isPlaying') {
+		if (params.field != 'status') {
 			return;
 		}
 
@@ -116,13 +116,6 @@ function Home() {
 				currentPlayer.status = STATUS.IN;
 				currentPlayer.currentLogId = undefined;
 			}
-		}
-
-		if (params.field == 'isPlaying') {
-			const now = new Date();
-			currentPlayer.isPlaying = false;
-			currentPlayer.timeGameEnded = now;
-			currentPlayer.displayedTimeGameEnded = now.toLocaleTimeString();
 		}
 
 		setAllPlayers(allPlayersCopy);
@@ -164,7 +157,7 @@ function Home() {
 	return (
 		<ThemeProvider theme={darkTheme}>
 			<CssBaseline />
-			<Box margin={2}>
+			<Box margin={5}>
 				<Stack
 					direction="row"
 					spacing={5}
@@ -192,7 +185,7 @@ function Home() {
 							<Typography
 								fontSize={25}
 								textAlign={'center'}>
-								Round 4
+								Round {ROUND_NUMBER}
 							</Typography>
 							<Button
 								variant="contained"
@@ -218,7 +211,7 @@ function Home() {
 					justifyContent="space-evenly">
 					<Box
 						sx={{
-							height: 500,
+							height: 400,
 							width: '45%',
 							'& .deleted': {
 								backgroundColor: '#7D221D',
@@ -249,7 +242,7 @@ function Home() {
 					</Box>
 					<Box
 						sx={{
-							height: 500,
+							height: 400,
 							width: '45%',
 							'& .signOut': {
 								backgroundColor: '#082759',
@@ -289,6 +282,15 @@ function Home() {
 						/>
 					</Box>
 				</Stack>
+				<Box margin={10}>
+					<Typography
+						align="center"
+						fontSize={48}>
+						{currentDateTime.toDateString()}
+						<br></br>
+						{currentDateTime.toLocaleTimeString()}
+					</Typography>
+				</Box>
 			</Box>
 		</ThemeProvider>
 	);

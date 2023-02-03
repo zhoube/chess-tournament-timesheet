@@ -21,15 +21,20 @@ export enum SHORT_TITLE {
 	ACM = 'ACM',
 }
 
-function getNameAndTitle(params: { row: { title: any; name: any } }) {
-	return `${params.row.title || ''} ${params.row.name}`;
-}
+export const ROUND_NUMBER = 5;
 
 export const logColumns: GridColumns = [
 	{
+		field: 'title',
+		headerName: 'Title',
+		width: 100,
+		headerAlign: 'center',
+		align: 'center',
+	},
+	{
 		field: 'displayedName',
-		headerName: 'Title and Name',
-		width: 345,
+		headerName: 'Name',
+		width: 245,
 		headerAlign: 'center',
 		align: 'center',
 	},
@@ -51,12 +56,18 @@ export const logColumns: GridColumns = [
 
 export const playerColumns: GridColumns = [
 	{
-		field: 'name',
-		headerName: 'Name',
-		width: 358,
+		field: 'title',
+		headerName: 'Title',
+		width: 100,
 		headerAlign: 'center',
 		align: 'center',
-		renderCell: (params) => `${params.row.title || ''} ${params.row.name}`,
+	},
+	{
+		field: 'name',
+		headerName: 'Name',
+		width: 379,
+		headerAlign: 'center',
+		align: 'center',
 	},
 	{
 		field: 'status',
@@ -86,62 +97,48 @@ export const playerColumns: GridColumns = [
 			}
 		},
 	},
-	{
-		field: 'isPlaying',
-		headerName: 'Game Ended?',
-		width: 150,
-		headerAlign: 'center',
-		align: 'center',
-		renderCell: (params) => {
-			if (params.row.isPlaying) {
-				return (
-					<Typography
-						fontSize={15}
-						margin={'2%'}
-						textAlign={'center'}>
-						Game Ended
-					</Typography>
-				);
-			} else {
-				return <Typography></Typography>;
-			}
-		},
-	},
 ];
 
 export const adminLogColumns: GridColumns = [
 	{
+		field: 'title',
+		headerName: 'Title',
+		width: 75,
+		headerAlign: 'center',
+		align: 'center',
+	},
+	{
 		field: 'displayedName',
 		headerName: 'Name',
-		width: 200,
+		width: 180,
 		headerAlign: 'center',
 		align: 'center',
 	},
 	{
 		field: 'displayedTimeOut',
 		headerName: 'Time Out',
-		width: 125,
+		width: 100,
 		headerAlign: 'center',
 		align: 'center',
 	},
 	{
 		field: 'displayedTimeIn',
 		headerName: 'Time In',
-		width: 125,
+		width: 100,
 		headerAlign: 'center',
 		align: 'center',
 	},
 	{
 		field: 'displayedTimeTaken',
 		headerName: 'Time Taken',
-		width: 125,
+		width: 100,
 		headerAlign: 'center',
 		align: 'center',
 	},
 	{
 		field: 'deleted',
 		headerName: 'Deleted?',
-		width: 100,
+		width: 75,
 		headerAlign: 'center',
 		align: 'center',
 	},
@@ -149,12 +146,18 @@ export const adminLogColumns: GridColumns = [
 
 export const adminPlayerColumns: GridColumns = [
 	{
-		field: 'name',
-		headerName: 'Name',
-		width: 250,
+		field: 'title',
+		headerName: 'Title',
+		width: 75,
 		headerAlign: 'center',
 		align: 'center',
-		renderCell: (params) => `${params.row.title || ''} ${params.row.name}`,
+	},
+	{
+		field: 'name',
+		headerName: 'Name',
+		width: 150,
+		headerAlign: 'center',
+		align: 'center',
 	},
 	{
 		field: 'exits',
