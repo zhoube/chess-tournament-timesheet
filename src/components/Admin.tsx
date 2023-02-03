@@ -54,29 +54,6 @@ function Admin() {
 		setCurrentLogId(1);
 	};
 
-	const handlePlayerStatusChange: GridEventListener<'cellClick'> = (
-		params
-	) => {
-		if (params.field != 'isPlaying') {
-			return;
-		}
-
-		const allPlayersCopy = [...allPlayers];
-		const currentPlayer: Player | undefined = allPlayersMap.get(
-			params.row.id
-		);
-
-		if (!currentPlayer) {
-			return;
-		}
-
-		if (params.field == 'isPlaying') {
-			currentPlayer.isPlaying = !currentPlayer.isPlaying;
-		}
-
-		setAllPlayers(allPlayersCopy);
-	};
-
 	return (
 		<ThemeProvider theme={darkTheme}>
 			<CssBaseline />
@@ -127,7 +104,7 @@ function Admin() {
 					direction="row"
 					spacing={5}
 					justifyContent="center">
-					<Box sx={{ height: 500, width: '55%' }}>
+					<Box sx={{ height: 500, width: '45%' }}>
 						<Typography
 							fontSize={20}
 							margin={'2%'}
@@ -147,7 +124,7 @@ function Admin() {
 					<Box
 						sx={{
 							height: 500,
-							width: '33%',
+							width: '45%',
 							'& .gameEnded': {
 								backgroundColor: '#5B2C6F',
 							},
@@ -168,7 +145,6 @@ function Admin() {
 							checkboxSelection={false}
 							experimentalFeatures={{ newEditingApi: true }}
 							components={{ Toolbar: GridToolbar }}
-							onCellClick={handlePlayerStatusChange}
 							hideFooter
 							getCellClassName={(params) => {
 								if (params.field == 'isPlaying') {

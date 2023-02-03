@@ -3,7 +3,7 @@ export const convert_time = (milliseconds: number) => {
 	const minutes = Math.floor(seconds / 60);
 	return (
 		minutes.toString() +
-		' mins' +
+		' mins ' +
 		(seconds - minutes * 60).toString() +
 		' secs'
 	);

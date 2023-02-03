@@ -113,28 +113,28 @@ export const adminLogColumns: GridColumns = [
 	{
 		field: 'displayedName',
 		headerName: 'Name',
-		width: 250,
+		width: 200,
 		headerAlign: 'center',
 		align: 'center',
 	},
 	{
 		field: 'displayedTimeOut',
 		headerName: 'Time Out',
-		width: 150,
+		width: 125,
 		headerAlign: 'center',
 		align: 'center',
 	},
 	{
 		field: 'displayedTimeIn',
 		headerName: 'Time In',
-		width: 150,
+		width: 125,
 		headerAlign: 'center',
 		align: 'center',
 	},
 	{
 		field: 'displayedTimeTaken',
 		headerName: 'Time Taken',
-		width: 150,
+		width: 125,
 		headerAlign: 'center',
 		align: 'center',
 	},
@@ -151,7 +151,7 @@ export const adminPlayerColumns: GridColumns = [
 	{
 		field: 'name',
 		headerName: 'Name',
-		width: 230,
+		width: 250,
 		headerAlign: 'center',
 		align: 'center',
 		renderCell: (params) => `${params.row.title || ''} ${params.row.name}`,
@@ -190,5 +190,12 @@ export const adminPlayerColumns: GridColumns = [
 				);
 			}
 		},
+	},
+	{
+		field: 'displayedTimeGameEnded',
+		headerName: 'Game Ended At',
+		width: 150,
+		headerAlign: 'center',
+		align: 'center',
 	},
 ];

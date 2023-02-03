@@ -119,7 +119,10 @@ function Home() {
 		}
 
 		if (params.field == 'isPlaying') {
+			const now = new Date();
 			currentPlayer.isPlaying = false;
+			currentPlayer.timeGameEnded = now;
+			currentPlayer.displayedTimeGameEnded = now.toLocaleTimeString();
 		}
 
 		setAllPlayers(allPlayersCopy);

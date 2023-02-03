@@ -8,4 +8,6 @@ export type Player = {
 	currentLogId?: number;
 	exits: number;
 	isPlaying: boolean;
+	timeGameEnded?: Date;
+	displayedTimeGameEnded?: string;
 };
