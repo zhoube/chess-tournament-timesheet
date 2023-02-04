@@ -134,7 +134,7 @@ function Admin() {
 								variant="contained"
 								color="error"
 								onClick={onClearClick}>
-								Admin
+								Clear
 							</Button>
 						</Stack>
 					</Box>
