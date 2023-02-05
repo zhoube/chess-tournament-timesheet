@@ -1,7 +1,13 @@
 import { useEffect, useState } from 'react';
 import { Box, Button, Stack, Typography } from '@mui/material';
 import { DataGrid, GridEventListener } from '@mui/x-data-grid';
-import { logColumns, playerColumns, ROUND_NUMBER, STATUS } from '../constants';
+import {
+	logColumns,
+	playerColumns,
+	ROUND_NUMBER,
+	STATUS,
+	TOURNAMENT_NAME,
+} from '../constants';
 import { sortedPlayers } from '../player/players';
 import { Player } from '../player/types';
 import { Log } from '../log/types';
@@ -117,7 +123,6 @@ function Home() {
 				currentPlayer.currentLogId = undefined;
 			}
 		}
-
 		setAllPlayers(allPlayersCopy);
 	};
 
@@ -174,8 +179,7 @@ function Home() {
 						<Typography
 							fontSize={30}
 							textAlign={'center'}>
-							74th Open and Women National Championships 2022 - Dr
-							Wong Yip Chong Cup
+							{TOURNAMENT_NAME}
 						</Typography>
 						<Stack
 							direction="row"

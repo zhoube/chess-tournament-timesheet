@@ -1,5 +1,5 @@
 import { Typography } from '@mui/material';
-import { GridCellParams, GridColumns } from '@mui/x-data-grid';
+import { GridColumns } from '@mui/x-data-grid';
 
 export enum STATUS {
 	IN = 'In',
@@ -23,11 +23,14 @@ export enum SHORT_TITLE {
 
 export const ROUND_NUMBER = 5;
 
+export const TOURNAMENT_NAME = `74th Open and Women National Championships 2022 - Dr
+								Wong Yip Chong Cup`;
+
 export const logColumns: GridColumns = [
 	{
 		field: 'title',
 		headerName: 'Title',
-		width: 100,
+		width: 75,
 		headerAlign: 'center',
 		align: 'center',
 	},
@@ -58,14 +61,14 @@ export const playerColumns: GridColumns = [
 	{
 		field: 'title',
 		headerName: 'Title',
-		width: 100,
+		width: 75,
 		headerAlign: 'center',
 		align: 'center',
 	},
 	{
 		field: 'name',
 		headerName: 'Name',
-		width: 379,
+		width: 405,
 		headerAlign: 'center',
 		align: 'center',
 	},
@@ -155,7 +158,7 @@ export const adminPlayerColumns: GridColumns = [
 	{
 		field: 'name',
 		headerName: 'Name',
-		width: 150,
+		width: 200,
 		headerAlign: 'center',
 		align: 'center',
 	},
@@ -196,8 +199,8 @@ export const adminPlayerColumns: GridColumns = [
 	},
 	{
 		field: 'displayedTimeGameEnded',
-		headerName: 'Game Ended At',
-		width: 150,
+		headerName: 'Ended At',
+		width: 100,
 		headerAlign: 'center',
 		align: 'center',
 	},

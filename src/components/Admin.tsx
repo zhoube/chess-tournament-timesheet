@@ -15,6 +15,7 @@ import {
 	adminPlayerColumns,
 	ROUND_NUMBER,
 	STATUS,
+	TOURNAMENT_NAME,
 } from '../constants';
 import { Log } from '../log/types';
 import { sortedPlayers } from '../player/players';
@@ -68,7 +69,7 @@ function Admin() {
 	const handlePlayerStatusChange: GridEventListener<'cellClick'> = (
 		params
 	) => {
-		if (params.field != 'status' && params.field != 'isPlaying') {
+		if (params.field != 'isPlaying') {
 			return;
 		}
 
@@ -82,10 +83,16 @@ function Admin() {
 		}
 
 		if (params.field == 'isPlaying') {
-			const now = new Date();
-			currentPlayer.isPlaying = false;
-			currentPlayer.timeGameEnded = now;
-			currentPlayer.displayedTimeGameEnded = now.toLocaleTimeString();
+			if (currentPlayer.isPlaying) {
+				const now = new Date();
+				currentPlayer.isPlaying = false;
+				currentPlayer.timeGameEnded = now;
+				currentPlayer.displayedTimeGameEnded = now.toLocaleTimeString();
+			} else {
+				currentPlayer.isPlaying = true;
+				currentPlayer.timeGameEnded = undefined;
+				currentPlayer.displayedTimeGameEnded = undefined;
+			}
 		}
 
 		setAllPlayers(allPlayersCopy);
@@ -111,8 +118,7 @@ function Admin() {
 						<Typography
 							fontSize={30}
 							textAlign={'center'}>
-							74th Open and Women National Championships 2022 - Dr
-							Wong Yip Chong Cup
+							{TOURNAMENT_NAME}
 						</Typography>
 						<Stack
 							direction="row"
