@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { Box, Button, Stack, Typography } from '@mui/material';
 import { DataGrid, GridEventListener } from '@mui/x-data-grid';
 import {
+	darkTheme,
 	logColumns,
 	playerColumns,
 	ROUND_NUMBER,
@@ -17,12 +18,6 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import logo from '../logo.jpg';
 import { filter } from 'lodash';
 import { convert_time } from '../functions';
-
-const darkTheme = createTheme({
-	palette: {
-		mode: 'dark',
-	},
-});
 
 function Home() {
 	const navigate = useNavigate();

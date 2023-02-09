@@ -13,6 +13,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import {
 	adminLogColumns,
 	adminPlayerColumns,
+	darkTheme,
 	ROUND_NUMBER,
 	STATUS,
 	TOURNAMENT_NAME,
@@ -21,12 +22,6 @@ import { Log } from '../log/types';
 import { sortedPlayers } from '../player/players';
 import { Player } from '../player/types';
 import logo from '../logo.jpg';
-
-const darkTheme = createTheme({
-	palette: {
-		mode: 'dark',
-	},
-});
 
 function Admin() {
 	const navigate = useNavigate();

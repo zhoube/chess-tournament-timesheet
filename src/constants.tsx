@@ -1,4 +1,4 @@
-import { Typography } from '@mui/material';
+import { createTheme, Typography } from '@mui/material';
 import { GridColumns } from '@mui/x-data-grid';
 
 export enum STATUS {
@@ -21,10 +21,16 @@ export enum SHORT_TITLE {
 	ACM = 'ACM',
 }
 
-export const ROUND_NUMBER = 5;
+export const ROUND_NUMBER = 7;
 
 export const TOURNAMENT_NAME = `74th Open and Women National Championships 2022 - Dr
 								Wong Yip Chong Cup`;
+
+export const darkTheme = createTheme({
+	palette: {
+		mode: 'dark',
+	},
+});
 
 export const logColumns: GridColumns = [
 	{
