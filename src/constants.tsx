@@ -81,7 +81,7 @@ export const playerColumns: GridColumns = [
 	{
 		field: 'status',
 		headerName: 'Action',
-		width: 150,
+		width: 148,
 		headerAlign: 'center',
 		align: 'center',
 		renderCell: (params) => {
