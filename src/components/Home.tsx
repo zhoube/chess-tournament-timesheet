@@ -85,6 +85,7 @@ function Home() {
 				displayedTimeTaken: convert_time(
 					now.getTime() - oldlog.timeOut.getTime()
 				),
+				deleted: now.getTime() - oldlog.timeOut.getTime() < 10000,
 			};
 			allLogsCopy[currentPlayer.currentLogId! - 1] = newLog;
 			setAllLogs(allLogsCopy);
