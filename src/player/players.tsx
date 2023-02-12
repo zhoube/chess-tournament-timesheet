@@ -102,13 +102,6 @@ const players: Player[] = [
 		isPlaying: true,
 	},
 	{
-		id: 14,
-		name: 'Tan, Zhong Kai',
-		status: STATUS.IN,
-		exits: 0,
-		isPlaying: true,
-	},
-	{
 		id: 15,
 		name: 'Saravanan, Durga',
 		status: STATUS.IN,
